@@ -27,3 +27,8 @@ void setBudget(){
 	scanf("%f", &monthly_Budget);
 	printf("Monthly Budget set to Rs. %.2f\n", monthly_Budget);
 }
+
+float calculateBalance(float total_Expenses){
+float remaining_Balance = total_Income - total_Expense;
+retrun remaining_Balance;
+}
