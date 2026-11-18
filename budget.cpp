@@ -34,3 +34,15 @@ void saveIncome(){
 	fclose(file);
 	printf("\nIncome Data Saved to Income File Successfully!");
 }
+
+void loadIncome(){
+	FILE *file = fopen("income.txt","r");
+	if(file==NULL){
+		printf("\nNo Saved Income File Found!!\n");
+		return;
+	}
+	fscanf(file, "%s %lf", incomeSource, &incomeAmount);
+	fclose(file);
+	printf("\nLoaded Income -> Source: %s, Amount: $%.2f\n",incomeSource, incomeAmount);
+}
+
