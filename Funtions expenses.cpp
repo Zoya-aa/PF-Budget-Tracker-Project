@@ -33,7 +33,7 @@ void addExpense(){
     count++;
 
     printf("\n");
-    printf("Expense added successfully!\n");
+    printf("Expense added successfully! \n");
 }
 
 void viewExpenses(){
