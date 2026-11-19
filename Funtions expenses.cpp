@@ -111,3 +111,45 @@ void searchByMonth(){
     if(found==0)
         printf("No expenses found for this month! \n");
     }
+    
+void saveExpenses(){
+    int i;
+    FILE *file;
+
+    file=fopen("expenses.txt","w");
+
+    if(file==NULL){
+        printf("File could not be opened! \n");
+        return;
+    }
+
+    for(i=0; i<count; i++){
+        fprintf(file,"%d %.2f %s %s %s\n", id[i],amount[i],category[i],description[i],month[i]);
+    }
+
+    fclose(file);
+
+    printf("Expenses saved successfully! \n");
+}
+
+void loadExpenses(){
+    FILE *file;
+
+    file=fopen("expenses.txt","r");
+
+    if(file==NULL){
+        printf("No saved expenses found! \n");
+        return;
+    }
+
+    count=0;
+
+    while(count<100 && fscanf(file,"%d %f %49s %119s %29s", &id[count],&amount[count],category[count],description[count],month[count])==5){
+        count++;
+    }
+
+    fclose(file);
+
+    printf("Expenses loaded successfully! \n");
+}
+
