@@ -78,5 +78,38 @@ fscanf(file,"%lf", &budget);
 	printf("\nLoaded Monthly Budget: $%lf\n", budget);
 }
 
+void calculateBalance(){
+	double balance = incomeAmount - totalExpenses;
+	printf("\nTotal Income: $%lf", incomeAmount);
+	printf("\nTotal Expenses: $%lf", totalExpenses);
+	printf("\nRemaining Balance: $%lf", balance);
+}
+
+void generateReport(){
+	printf("\n----- FINANCIAL SUMMARY -----\n");
+	printf("User: %[^\n]", userName);
+	printf("\nIncome Source: $%lf", incomeSource);
+	printf("\nTotal Income: $%lf",incomeAmount);
+	printf("\nMonthly Budget: $%lf", budget);
+	printf("\nTotal Expenses: $%lf",totalExpenses);
+	printf("\nBalance: $%lf", incomeAmount - totalExpenses);
+	printf("\n--------------------------------------\n");
+}
+
+void checkBudgetAlert(){
+	printf("\nChecking Budget Status...\n");
+	if(budget==0.0){
+	printf("Budget has not been set!\n");
+	return;
+	}
+	if(totalExpenses>=incomeAmount){
+	printf("\nWARNING: YOU HAVE REACHED YOUR BUDGET LIMIT OF %lf!(Current Expenses = %lf)\n", budget, totalExpenses);
+	}
+	else{
+	printf("STATUS: You are within your budget. Remaining budget = $%lf.", budget - totalExpenses);
+	}
+
+
+
 
 
