@@ -18,20 +18,16 @@ void addUser(){
 }
 
 void addIncome(){
-	printf("\n");
-	printf("Enter income source(e.g:Salary or Buisness): ");
+	printf("\nEnter income source(e.g:Salary or Buisness): ");
 	scanf("%s", incomeSource);
-	printf("\n");
-	printf("Enter income amount: ");
+	printf("\nEnter income amount: ");
 	scanf("%lf", &incomeAmount);
-	printf("\n");
-	printf("Income record added successfully! ");
+	printf("\nIncome record added successfully! ");
 }
 
 void saveIncome(){
 	FILE *file = fopen("income.txt","w");
 	if(file==NULL){
-		printf("\n");
 		printf("\nError Opening Income File!\n");
 	return;
 	}
@@ -55,8 +51,7 @@ void loadIncome(){
 }
 
 void setBudget(){
-	printf("\n");
-	printf("Enter monthly budget limit: ");
+	printf("\nEnter monthly budget limit: ");
 	scanf("%lf", &budget);
 	printf("\n");
 	printf("Monthly budget successfully set to $%lf", budget);
@@ -64,13 +59,23 @@ void setBudget(){
 
 void saveBudget(){
 	FILE *file = fopen("budget.txt","w");
-if(file==NULL){
-printf("\nError Opening Budget File for Writing.\n"):
+	if(file==NULL){
+	printf("\nError Opening Budget File for Writing.\n"):
 	retrun;
 }
-fprintf("file,"%lf",budget);
-fclose(file);
-printf("Budget Information saved to file successfully!!\n");
+	fprintf("file,"%lf",budget);
+	fclose(file);
+	printf("Budget Information saved to file successfully!!\n");
+}
+
+void loadBudget(){
+	FILE *file = fopen("budget.txt","r");
+	if(file==NULL){
+	printf("\nNo saved budget file found.\n");
+	return;
+	}
+fscanf(file,"%lf", &budget);
+	printf("\nLoaded Monthly Budget: $%lf\n", budget);
 }
 
 
