@@ -20,15 +20,17 @@ void addUser(){
 void addIncome(){
 	printf("\nEnter income source(e.g:Salary or Buisness): ");
 	scanf("%s", incomeSource);
-	printf("\nEnter income amount: ");
+	printf("\n");
+	printf("Enter income amount: ");
 	scanf("%lf", &incomeAmount);
-	printf("\nIncome record added successfully! ");
+	printf("\n");
+	printf("Income record added successfully! ");
 }
 
 void saveIncome(){
 	FILE *file = fopen("income.txt","w");
 	if(file==NULL){
-		printf("\nError Opening Income File!\n");
+		printf("\nError Opening Income File! \n");
 	return;
 	}
 	fprintf(file, "%s %.2f\n", incomeSource, incomeAmount);
@@ -51,7 +53,8 @@ void loadIncome(){
 }
 
 void setBudget(){
-	printf("\nEnter monthly budget limit: ");
+	printf("\n");
+	printf("Enter monthly budget limit: ");
 	scanf("%lf", &budget);
 	printf("\n");
 	printf("Monthly budget successfully set to $%lf", budget);
@@ -60,12 +63,13 @@ void setBudget(){
 void saveBudget(){
 	FILE *file = fopen("budget.txt","w");
 	if(file==NULL){
-	printf("\nError Opening Budget File for Writing.\n"):
+		printf("\n");
+	    printf("\nError Opening Budget File for Writing.\n"):
 	retrun;
 }
 	fprintf("file,"%lf",budget);
 	fclose(file);
-	printf("Budget Information saved to file successfully!!\n");
+	printf("Budget Information saved to file successfully!! \n");
 }
 
 void loadBudget(){
@@ -99,11 +103,11 @@ void generateReport(){
 void checkBudgetAlert(){
 	printf("\nChecking Budget Status...\n");
 	if(budget==0.0){
-	printf("Budget has not been set!\n");
+	printf("Budget has not been set! \n");
 	return;
 	}
 	if(totalExpenses>=incomeAmount){
-	printf("\nWARNING: YOU HAVE REACHED YOUR BUDGET LIMIT OF %lf!(Current Expenses = %lf)\n", budget, totalExpenses);
+	printf("\nWARNING: YOU HAVE REACHED YOUR BUDGET LIMIT OF %lf!(Current Expenses = %lf)\n", budget,totalExpenses);
 	}
 	else{
 	printf("STATUS: You are within your budget. Remaining budget = $%lf.", budget - totalExpenses);
