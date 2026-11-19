@@ -5,7 +5,7 @@ int id[100];
 float amount[100];
 char category[100][50];
 char description[100][120];
-char date[100][30];
+char month[100][30];
 
 int count=0;
 
@@ -27,13 +27,13 @@ void addExpense(){
     printf("Enter description: ");
     scanf(" %119[^\n]", description[count]);
 
-    printf("Enter date (DD-MM-YYYY): ");
-    scanf("%29s", date[count]);
+    printf("Enter month name: ");
+    scanf("%s", month[count]);
 
     count++;
 
     printf("\n");
-    printf("Expense added successfully! \n");
+    printf("Expense added successfully!\n");
 }
 
 void viewExpenses(){
@@ -50,13 +50,13 @@ void viewExpenses(){
         printf("Amount: %.2f\n", amount[i]);
         printf("Category: %s\n", category[i]);
         printf("Description: %s\n", description[i]);
-        printf("Date: %s\n", date[i]);
+        printf("Month: %s\n", month[i]);
     }
 }
 
-float calculateTotalExpenses(){
+double calculateTotalExpenses(){
     int i;
-    float total=0;
+    double total=0;
 
     for(i=0; i<count; i++){
         total=total+amount[i];
@@ -78,7 +78,7 @@ void searchByCategory(){
             printf("Expense ID: %d\n", id[i]);
             printf("Amount: %.2f\n", amount[i]);
             printf("Description: %s\n", description[i]);
-            printf("Date: %s\n", date[i]);
+            printf("Month: %s\n", month[i]);
 
             found=1;
         }
@@ -89,4 +89,25 @@ void searchByCategory(){
     }
 }
 
+void searchByMonth(){
+    int i,found=0;
+    char searchMonth[20];
 
+    printf("Enter month to search: ");
+    scanf("%19s", searchMonth);
+
+    for(i=0; i<count; i++){
+        if(strcmp(month[i],searchMonth)==0){
+        	printf("\n");
+            printf("Expense ID: %d\n", id[i]);
+            printf("Amount: %.2f\n", amount[i]);
+            printf("Category: %s\n", category[i]);
+            printf("Description: %s\n", description[i]);
+
+            found=1;
+        }
+    }
+
+    if(found==0)
+        printf("No expenses found for this month! \n");
+    }
