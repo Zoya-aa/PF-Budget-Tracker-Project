@@ -46,3 +46,22 @@ void loadIncome(){
 	printf("\nLoaded Income -> Source: %s, Amount: $%.2f\n",incomeSource, incomeAmount);
 }
 
+void setBudget(){
+	printf("\nEnter monthly budget limit:");
+	scanf("%lf", &budget);
+	printf("\nMonthly budget successfully set to $%lf",budget);
+}
+
+void saveBudget(){
+	FILE *file = fopen("budget.txt","w");
+if(file==NULL){
+printf("\nError Opening Budget File for Writing.\n"):
+	retrun;
+}
+fprintf("file,"%lf",budget);
+fclose(file);
+printf("Budget Information saved to file successfully!!\n");
+}
+
+
+
