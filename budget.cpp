@@ -2,8 +2,8 @@
 #include<stdlib.h>
 	
 	char userName[50];
-	char incomeSource[50];
-	double incomeAmount;
+	char incomeSource[100][50];
+	double incomeAmount[100];
 	int incomeCount=0;
 	double budget=0;
 	char incomeFile[]="income.txt";
@@ -19,45 +19,47 @@ void addUser(){
 
 void addIncome(){
 	printf("\nEnter income source(e.g:Salary or Buisness): ");
-	scanf("%s", incomeSource);
+	scanf("%s", incomeSource[incomeCount]);
 	printf("\n");
 	printf("Enter income amount: ");
-	scanf("%lf", &incomeAmount);
+	scanf("%lf", &incomeAmount[incomeCount]);
 	printf("\n");
 	printf("Income record added successfully! ");
 }
 
 void saveIncome(){
-	FILE *file = fopen("income.txt","w");
+	FILE *file = fopen(incomeFile,"w");
 	if(file==NULL){
 		printf("\nError Opening Income File! \n");
 	return;
 	}
-	fprintf(file, "%s %.2f\n", incomeSource, incomeAmount);
-	fclose(file);
-	printf("\n");
-	printf("Income Data Saved to Income File Successfully! ");
+	fprintf(file, "%d\n", incomeCount);
+	for(int i=0; i<incomeCount; i++){
+		fprintf(\nfile, "%s %lf", incomeSource, incomeAmount);
+	}
+		fclose(file);
+		printf("\nIncome Data Saved to Income File Successfully! ");
 }
 
 void loadIncome(){
-	FILE *file = fopen("income.txt","r");
+	FILE *file = fopen(incomeFile,"r");
 	if(file==NULL){
-		printf("\n");
-		printf("No Saved Income File Found!! \n");
+		printf("\nNo Saved Income File Found!! \n");
 		return;
 	}
-	fscanf(file, "%s %lf", incomeSource, &incomeAmount);
+	fscanf(file, "%d\n", &incomeCount);
+	for(int i=0; i<incomeCount; i++){
+		fscanf(file, "%s %lf", incomeSource, &incomeAmount);
+		printf("\nLoaded Income -> Source: %s, Amount: $%lf\n", incomeSource[i],incomeAmount[i]);
+}
 	fclose(file);
-	printf("\n");
-	printf("Loaded Income -> Source: %s, Amount: $%.2f\n", incomeSource,incomeAmount);
 }
 
 void setBudget(){
 	printf("\n");
 	printf("Enter monthly budget limit: ");
 	scanf("%lf", &budget);
-	printf("\n");
-	printf("Monthly budget successfully set to $%lf", budget);
+	printf("\nMonthly budget successfully set to $%lf", budget);
 }
 
 void saveBudget(){
