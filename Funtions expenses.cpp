@@ -28,7 +28,7 @@ void addExpense(){
     scanf(" %119[^\n]", description[count]);
 
     printf("Enter month name: ");
-    scanf("%s", month[count]);
+    scanf("%29s", month[count]);
 
     count++;
 
@@ -91,10 +91,10 @@ void searchByCategory(){
 
 void searchByMonth(){
     int i,found=0;
-    char searchMonth[20];
+    char searchMonth[30];
 
     printf("Enter month to search: ");
-    scanf("%19s", searchMonth);
+    scanf("%29s", searchMonth);
 
     for(i=0; i<count; i++){
         if(strcmp(month[i],searchMonth)==0){
@@ -124,7 +124,7 @@ void saveExpenses(){
     }
 
     for(i=0; i<count; i++){
-        fprintf(file,"%d %.2f %s %s %s\n", id[i],amount[i],category[i],description[i],month[i]);
+        fprintf(file,"%d %lf %s %s %s\n", id[i],amount[i],category[i],description[i],month[i]);
     }
 
     fclose(file);
@@ -144,7 +144,7 @@ void loadExpenses(){
 
     count=0;
 
-    while(count<100 && fscanf(file,"%d %f %49s %119s %29s", &id[count],&amount[count],category[count],description[count],month[count])==5){
+    while(count<100 && fscanf(file,"%d %lf %49s %119s %29s", &id[count],&amount[count],category[count],description[count],month[count])==5){
         count++;
     }
 
