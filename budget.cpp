@@ -36,7 +36,7 @@ void saveIncome(){
 	}
 	fprintf(file, "%d\n", incomeCount);
 	for(int i=0; i<incomeCount; i++){
-		fprintf(file, "%s %lf", incomeSource[i], incomeAmount[i]);
+		fprintf(file, "%s %lf\n", incomeSource[i], incomeAmount[i]);
 	}
 		fclose(file);
 		printf("\nIncome Data Saved to Income File Successfully! ");
