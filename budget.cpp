@@ -12,8 +12,7 @@
 
 void addUser(){
 	printf("Enter user name: ");
-	scanf("%[^\n]", userName);
-	printf("\n");
+	scanf(" %[^\n]", userName);
 	printf("User %s is registered successfully! \n", userName);
 }
 
