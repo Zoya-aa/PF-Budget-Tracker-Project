@@ -2,7 +2,7 @@
 #include <string.h>
 
 int id[100];
-float amount[100];
+double totalExpenses[100];
 char category[100][50];
 char description[100][120];
 char month[100][30];
@@ -18,8 +18,8 @@ void addExpense(){
     printf("Enter Expense ID: ");
     scanf("%d", &id[count]);
 
-    printf("Enter amount: ");
-    scanf("%f", &amount[count]);
+    printf("Enter total expenses: ");
+    scanf("%lf", &totalExpenses[count]);
 
     printf("Enter category: ");
     scanf("%49s", category[count]);
@@ -47,7 +47,7 @@ void viewExpenses(){
     for(i=0; i<count; i++){
     	printf("\n");
         printf("Expense ID: %d\n", id[i]);
-        printf("Amount: %.2f\n", amount[i]);
+        printf("Total Expenses: %lf\n", totalExpenses[i]);
         printf("Category: %s\n", category[i]);
         printf("Description: %s\n", description[i]);
         printf("Month: %s\n", month[i]);
@@ -59,7 +59,7 @@ double calculateTotalExpenses(){
     double total=0;
 
     for(i=0; i<count; i++){
-        total=total+amount[i];
+        total=total+totalExpenses[i];
     }
 
     return total;
@@ -76,7 +76,7 @@ void searchByCategory(){
         if(strcmp(category[i],searchCategory)==0){
         	printf("\n");
             printf("Expense ID: %d\n", id[i]);
-            printf("Amount: %.2f\n", amount[i]);
+            printf("Total Expenses: %lf\n", totalExpenses[i]);
             printf("Description: %s\n", description[i]);
             printf("Month: %s\n", month[i]);
 
@@ -100,7 +100,7 @@ void searchByMonth(){
         if(strcmp(month[i],searchMonth)==0){
         	printf("\n");
             printf("Expense ID: %d\n", id[i]);
-            printf("Amount: %.2f\n", amount[i]);
+            printf("Total Expenses: %lf\n", totalExpenses[i]);
             printf("Category: %s\n", category[i]);
             printf("Description: %s\n", description[i]);
 
@@ -124,7 +124,7 @@ void saveExpenses(){
     }
 
     for(i=0; i<count; i++){
-        fprintf(file,"%d %.2f %s %s %s\n", id[i],amount[i],category[i],description[i],month[i]);
+        fprintf(file,"%d %.2f %s %s %s\n", id[i],totalExpenses[i],category[i],description[i],month[i]);
     }
 
     fclose(file);
@@ -144,7 +144,7 @@ void loadExpenses(){
 
     count=0;
 
-    while(count<100 && fscanf(file,"%d %f %49s %119s %29s", &id[count],&amount[count],category[count],description[count],month[count])==5){
+    while(count<100 && fscanf(file,"%d %f %49s %119s %29s", &id[count],&totalExpenses[count],category[count],description[count],month[count])==5){
         count++;
     }
 
