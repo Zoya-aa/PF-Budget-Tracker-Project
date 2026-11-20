@@ -36,7 +36,7 @@ void saveIncome(){
 	}
 	fprintf(file, "%d\n", incomeCount);
 	for(int i=0; i<incomeCount; i++){
-		fprintf(\nfile, "%s %lf", incomeSource[i], incomeAmount[i]);
+		fprintf(file, "%s %lf", incomeSource[i], incomeAmount[i]);
 	}
 		fclose(file);
 		printf("\nIncome Data Saved to Income File Successfully! ");
@@ -48,7 +48,7 @@ void loadIncome(){
 		printf("\nNo Saved Income File Found!! \n");
 		return;
 	}
-	fscanf(file, "%d\n", &incomeCount);
+	fscanf(file, "%d", &incomeCount);
 	for(int i=0; i<incomeCount; i++){
 		fscanf(file, "%s %lf", incomeSource[i], &incomeAmount[i]);
 		printf("\nLoaded Income -> Source: %s, Amount: $%lf\n", incomeSource[i],incomeAmount[i]);
@@ -66,10 +66,10 @@ void setBudget(){
 void saveBudget(){
 	FILE *file = fopen(budgetFile,"w");
 	if(file==NULL){
-	    printf("\nError Opening Budget File for Writing.\n"):
+	    printf("\nError Opening Budget File for Writing.\n");
 		return;
 }
-	fprintf(file,"%lf\n",budget);
+	fprintf(file,"%lf",budget);
 	fclose(file);
 	printf("Budget Information saved to file successfully!! \n");
 }
@@ -116,7 +116,7 @@ void generateReport(){
 	double balance = totalIncome - totalExpensesSum;
 	
 	printf("\n----- FINANCIAL SUMMARY -----\n");
-	printf("User: %[^\n]", userName);
+	printf("User: %s\n", userName);
 	printf("\nIncome Source:\n");
 	for(int i=0; i<incomeCount; i++){
 		printf(" -%s: %lf\n", incomeSource[i], incomeAmount[i]);
@@ -146,8 +146,3 @@ void checkBudgetAlert(){
 		printf("STATUS: You are within your budget. Remaining budget = $%lf.", budget - totalExpensesSum);
 	}
 }
-
-
-
-
-
