@@ -35,7 +35,7 @@ void saveIncome(){
 	}
 	fprintf(file, "%d\n", incomeCount);
 	for(int i=0; i<incomeCount; i++){
-		fprintf(\nfile, "%s %lf", incomeSource, incomeAmount);
+		fprintf(\nfile, "%s %lf", incomeSource[i], incomeAmount[i]);
 	}
 		fclose(file);
 		printf("\nIncome Data Saved to Income File Successfully! ");
@@ -49,7 +49,7 @@ void loadIncome(){
 	}
 	fscanf(file, "%d\n", &incomeCount);
 	for(int i=0; i<incomeCount; i++){
-		fscanf(file, "%s %lf", incomeSource, &incomeAmount);
+		fscanf(file, "%s %lf", incomeSource[i], &incomeAmount[i]);
 		printf("\nLoaded Income -> Source: %s, Amount: $%lf\n", incomeSource[i],incomeAmount[i]);
 }
 	fclose(file);
@@ -63,57 +63,88 @@ void setBudget(){
 }
 
 void saveBudget(){
-	FILE *file = fopen("budget.txt","w");
+	FILE *file = fopen(budgetFile,"w");
 	if(file==NULL){
-		printf("\n");
 	    printf("\nError Opening Budget File for Writing.\n"):
-	retrun;
+		return;
 }
-	fprintf("file,"%lf",budget);
+	fprintf(file,"%lf\n",budget);
 	fclose(file);
 	printf("Budget Information saved to file successfully!! \n");
 }
 
 void loadBudget(){
-	FILE *file = fopen("budget.txt","r");
+	FILE *file = fopen(budgetFile,"r");
 	if(file==NULL){
 		printf("\nNo saved budget file found.\n");
 	return;
 	}
-fscanf(file,"%lf", &budget);
+	fscanf(file,"%lf", &budget);
+	fclose(file);
 	printf("\nLoaded Monthly Budget: $%lf\n", budget);
 }
 
+double calculateTotalIncome(){
+	double totalIncome = 0;
+	for(int i=0; i<incomeCount; i++){
+	totalIncome+=incomeAmount[i];
+	}
+	return totalIncome;
+}
+
 void calculateBalance(){
-	double balance = incomeAmount - totalExpenses;
-	printf("\nTotal Income: $%lf", incomeAmount);
-	printf("\nTotal Expenses: $%lf", totalExpenses);
+	double totalIncome = calculateTotalIncome();
+
+	double totalExpensesSum = 0;
+	for(int i=0; i<count; i++){
+		totalExpensesSum += totalExpenses[i];
+	}
+	double balance = totalIncome - totalExpensesSum;
+	printf("\nTotal Income: $%lf", totalIncome);
+	printf("\nTotal Expenses: $%lf", totalExpensesSum);
 	printf("\nRemaining Balance: $%lf", balance);
 }
 
 void generateReport(){
+	double totalIncome = calculateTotalIncome();
+	
+	double totalExpensesSum = 0;
+	for(int i=0; i<count; i++){
+		totalExpensesSum += totalExpenses[i];
+	}
+	double balance = totalIncome - totalExpensesSum;
+	
 	printf("\n----- FINANCIAL SUMMARY -----\n");
 	printf("User: %[^\n]", userName);
-	printf("\nIncome Source: $%lf", incomeSource);
-	printf("\nTotal Income: $%lf",incomeAmount);
+	printf("\nIncome Source:\n");
+	for(int i=0; i<incomeCount; i++){
+		printf(" -%s: %lf\n", incomeSource[i], incomeAmount[i]);
+	}
+	printf("\nTotal Income: $%lf",totalIncome);
+	printf("\nTotal Expenses: $%lf",totalExpensesSum);
 	printf("\nMonthly Budget: $%lf", budget);
-	printf("\nTotal Expenses: $%lf",totalExpenses);
-	printf("\nBalance: $%lf", incomeAmount - totalExpenses);
+	printf("\nBalance: $%lf",balance);
 	printf("\n--------------------------------------\n");
 }
 
 void checkBudgetAlert(){
 	printf("\nChecking Budget Status...\n");
 	if(budget==0.0){
-	printf("Budget has not been set! \n");
+		printf("Budget has not been set! \n");
 	return;
 	}
-	if(totalExpenses>=incomeAmount){
-	printf("\nWARNING: YOU HAVE REACHED YOUR BUDGET LIMIT OF %lf!(Current Expenses = %lf)\n", budget,totalExpenses);
+	double totalIncome = calculateTotalIncome();
+	double totalExpensesSum = 0;
+	for(int i=0; i<count; i++){
+		totalExpensesSum += totalExpenses[i];
+	}
+	if(totalExpensesSum>=budget){
+		printf("\nWARNING: YOU HAVE REACHED YOUR BUDGET LIMIT OF %lf!(Current Expenses = %lf)\n", budget, totalExpensesSum);
 	}
 	else{
-	printf("STATUS: You are within your budget. Remaining budget = $%lf.", budget - totalExpenses);
+		printf("STATUS: You are within your budget. Remaining budget = $%lf.", budget - totalExpensesSum);
 	}
+}
 
 
 
