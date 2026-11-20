@@ -23,6 +23,7 @@ void addIncome(){
 	printf("\n");
 	printf("Enter income amount: ");
 	scanf("%lf", &incomeAmount[incomeCount]);
+	incomeCount++;
 	printf("\n");
 	printf("Income record added successfully! ");
 }
