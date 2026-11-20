@@ -3,9 +3,9 @@
 	
 	char userName[50];
 	char incomeSource[50];
-	float incomeAmount;
+	double incomeAmount;
 	int incomeCount=0;
-	float budget=0;
+	double budget=0;
 	char incomeFile[]="income.txt";
 	char  budgetFile[]="budget.txt";
 	
@@ -75,7 +75,7 @@ void saveBudget(){
 void loadBudget(){
 	FILE *file = fopen("budget.txt","r");
 	if(file==NULL){
-	printf("\nNo saved budget file found.\n");
+		printf("\nNo saved budget file found.\n");
 	return;
 	}
 fscanf(file,"%lf", &budget);
