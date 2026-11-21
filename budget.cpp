@@ -8,7 +8,7 @@
 	double budget=0;
 	
 	char incomeFile[]="income.txt";
-	char  budgetFile[]="budget.txt";
+	char budgetFile[]="budget.txt";
 	
 
 void addUser(){
