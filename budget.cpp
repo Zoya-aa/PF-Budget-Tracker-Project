@@ -1,12 +1,13 @@
 #include<stdio.h>
 #include<stdlib.h>
-	
+#include<string.h>
+
+# define MAX_ENTRIES 100
 	char userName[50];
-	char incomeSource[100][50];
-	double incomeAmount[100];
+	char incomeSource[MAX_ENTRIES][50];
+	double incomeAmount[MAX_ENTRIES];
 	int incomeCount=0;
 	double budget=0;
-	
 	char incomeFile[]="income.txt";
 	char budgetFile[]="budget.txt";
 	
@@ -24,10 +25,14 @@ void addIncome(){
 		return;
 	}
 	printf("\nEnter income source(e.g:Salary or Buisness): ");
-	scanf("%49s", incomeSource[incomeCount]);
-	printf("\n");
-	printf("Enter income amount: ");
-	if(scanf("%lf", &incomeAmount[incomeCount] !=1){
+	if(scanf("%49s", incomeSource[incomeCount]) != 1){
+		printf("\nInvalid Source!!\n");
+		int c;
+		while((c = getchar()) != '\n' && c != EOF){}
+		return;
+	}
+	printf("\nEnter income amount: ");
+	if(scanf("%lf", &incomeAmount[incomeCount]) !=1){
 		printf("\nInvalid!\n");
 		int c;
 		while((c = getchar()) != '\n' && c!=EOF){}
@@ -64,10 +69,12 @@ void loadIncome(){
 		printf("\nIncome file is empty.\n");
 		return;
 	}
+	if(incomeCount < 0){
+		incomeCount = 0;
+	}
 	if(incomeCount>100){
 		incomeCount = 100;
 	}
-		
 	for(int i=0; i<incomeCount; i++){
 		if(fscanf(file, "%49s %lf", incomeSource[i], &incomeAmount[i]) !=2){
 			incomeCount = i;
@@ -92,7 +99,7 @@ void setBudget(){
 
 void saveBudget(){
 	FILE *file = fopen(budgetFile,"w");
-	if(file = =NULL){
+	if(file == NULL){
 	    printf("\nError Opening Budget File for Writing.\n");
 		return;
 }
@@ -114,7 +121,7 @@ void loadBudget(){
 		return;
 	}
 	fclose(file);
-	printf("\nLoaded Monthly Budget: $%lf\n", budget);
+	printf("\nLoaded Monthly Budget: $%.2f\n", budget);
 }
 
 double calculateTotalIncome(){
