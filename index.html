@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Budget Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Budget Tracker</h1>
+    <nav>
+      <button class="tab active" data-page="dashboard">Dashboard</button>
+      <button class="tab" data-page="expenses">Expenses</button>
+      <button class="tab" data-page="budget">Income &amp; Budget</button>
+      <button class="tab" data-page="report">Report</button>
+    </nav>
+  </header>
+
+  <main>
+    <p id="server-error" class="msg err"></p>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="page active">
+      <h2 id="welcome">Welcome</h2>
+      <div class="cards">
+        <div class="card"><span>Income</span><strong id="d-income">0.00</strong></div>
+        <div class="card"><span>Spent</span><strong id="d-spent">0.00</strong></div>
+        <div class="card"><span>Remaining</span><strong id="d-balance">0.00</strong></div>
+        <div class="card"><span>Monthly budget</span><strong id="d-budget">0.00</strong></div>
+      </div>
+      <div class="bar"><div id="bar-fill"></div></div>
+      <p id="bar-text"></p>
+      <div id="alert" class="alert hidden"></div>
+    </section>
+
+    <!-- EXPENSES (Member 1) -->
+    <section id="expenses" class="page">
+      <h2>Add expense</h2>
+      <form id="expense-form" class="form-grid">
+        <label>Amount <input type="number" name="amount" step="0.01" min="0.01" required></label>
+        <label>Category <input type="text" name="category" placeholder="Food, Rent..." required></label>
+        <label>Description <input type="text" name="description" placeholder="What was it for?"></label>
+        <label>Month
+          <select name="month" required>
+            <option>January</option><option>February</option><option>March</option>
+            <option>April</option><option>May</option><option>June</option>
+            <option>July</option><option>August</option><option>September</option>
+            <option>October</option><option>November</option><option>December</option>
+          </select>
+        </label>
+        <button type="submit">Add expense</button>
+      </form>
+      <p id="expense-msg" class="msg"></p>
+
+      <div class="row">
+        <h2>All expenses</h2>
+        <input type="search" id="search" placeholder="Search by category or month">
+      </div>
+      <table>
+        <thead><tr><th>ID</th><th>Month</th><th>Category</th><th>Description</th><th class="num">Amount</th></tr></thead>
+        <tbody id="expense-rows"></tbody>
+      </table>
+      <p id="expense-total" class="total"></p>
+    </section>
+
+    <!-- INCOME & BUDGET (Member 2) -->
+    <section id="budget" class="page">
+      <h2>Your name</h2>
+      <form id="name-form" class="form-grid">
+        <label>Name <input type="text" name="name" id="b-name" required></label>
+        <button type="submit">Save name</button>
+      </form>
+      <p id="name-msg" class="msg"></p>
+
+      <h2>Add income</h2>
+      <form id="income-form" class="form-grid">
+        <label>Source <input type="text" name="source" placeholder="Salary, Business..." required></label>
+        <label>Amount <input type="number" name="amount" step="0.01" min="0.01" required></label>
+        <button type="submit">Add income</button>
+      </form>
+      <p id="income-msg" class="msg"></p>
+      <table>
+        <thead><tr><th>Source</th><th class="num">Amount</th></tr></thead>
+        <tbody id="income-rows"></tbody>
+      </table>
+      <p id="income-total" class="total"></p>
+
+      <h2>Monthly budget</h2>
+      <form id="budget-form" class="form-grid">
+        <label>Spending limit <input type="number" name="budget" id="b-budget" step="0.01" min="0.01" required></label>
+        <button type="submit">Set budget</button>
+      </form>
+      <p id="budget-msg" class="msg"></p>
+    </section>
+
+    <!-- REPORT -->
+    <section id="report" class="page">
+      <h2>Monthly report</h2>
+      <div class="cards">
+        <div class="card"><span>Total income</span><strong id="r-income">0.00</strong></div>
+        <div class="card"><span>Total expenses</span><strong id="r-spent">0.00</strong></div>
+        <div class="card"><span>Remaining balance</span><strong id="r-balance">0.00</strong></div>
+      </div>
+      <h3>Spending by category</h3>
+      <table>
+        <thead><tr><th>Category</th><th class="num">Total</th></tr></thead>
+        <tbody id="category-rows"></tbody>
+      </table>
+      <button id="export-btn">Export to report.txt</button>
+      <p id="report-msg" class="msg"></p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
