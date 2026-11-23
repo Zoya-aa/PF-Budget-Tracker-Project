@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "Function expenses.h"
+#include "expenses.h"
 #include "budget.h"
 
 int main(){
@@ -83,5 +83,6 @@ int main(){
 
     return 0;
 }
+
 
 
