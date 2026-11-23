@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BUDGET TRACKER</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">BUDGET<span style="color:#fff">TRACKER</span></div>
+    <div class="nav active">Dashboard</div>
+    <div class="nav" onclick="setUser()">Set User & Budget</div>
+    <div class="nav" onclick="report()">Download Report (.txt)</div>
+    <div class="nav" onclick="save()">Save Data</div>
+    <div class="nav" onclick="resetAll()">Reset All</div>
+  </div>
+
+  <div class="main">
+    <div class="top">
+      <div>
+        <div class="lbl" id="userBanner">USER: NEW USER</div>
+        <h2 style="margin:0">Monthly Dashboard</h2>
+      </div>
+      <div>
+        <button onclick="setUser()">Set User & Budget</button>
+        <button onclick="report()">Report (.txt)</button>
+        <button onclick="save()">Save</button>
+      </div>
+    </div>
+
+    <div class="alert" id="status">Welcome! Set your budget or add a transaction.</div>
+
+    <div class="grid4">
+      <div class="card"><div class="lbl">Balance</div><div class="num" id="bal">$0.00</div></div>
+      <div class="card"><div class="lbl">Income</div><div class="num" style="color:#22c55e" id="inc">$0.00</div></div>
+      <div class="card"><div class="lbl">Spent</div><div class="num" style="color:#3b82f6" id="exp">$0.00</div></div>
+      <div class="card glow"><div class="lbl">Left to Spend</div><div class="num" style="color:#00e5ff" id="left">$0.00</div></div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3 style="margin-top:0">Spending Trend</h3>
+        <canvas id="trendChart" width="400" height="170"></canvas>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0">Category Budgets</h3>
+        <div id="bars"></div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3 style="margin-top:0">+ Add Entry</h3>
+        <select id="type" onchange="document.getElementById('extra').style.display=this.value=='exp'?'block':'none'">
+          <option value="exp">Expense</option>
+          <option value="inc">Income</option>
+        </select>
+        <input id="desc" placeholder="Description / Income Source">
+        <input id="amt" type="number" placeholder="Amount ($)">
+        <div id="extra">
+          <select id="cat">
+            <option>Housing</option><option>Food</option><option>Transport</option><option>Fun</option>
+          </select>
+          <input id="month" value="November" placeholder="Month">
+        </div>
+        <button style="width:100%" onclick="add()">Add Record</button>
+      </div>
+
+      <div class="card">
+        <div class="top" style="margin-bottom:10px">
+          <h3 style="margin:0">Transactions</h3>
+          <input id="find" placeholder="Search..." onkeyup="updateUI()" style="width:160px;margin:0">
+        </div>
+        <div id="list" style="max-height:220px;overflow-y:auto"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
