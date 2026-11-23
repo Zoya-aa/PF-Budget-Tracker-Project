@@ -1,4 +1,3 @@
-// Starts fresh with 0 values unless saved in browser storage
 let data = JSON.parse(localStorage.getItem('bt_data')) || {
   user: 'New User',
   budget: 0,
@@ -49,7 +48,6 @@ function updateUI() {
   document.getElementById('exp').innerText = '$' + totExp.toFixed(2);
   document.getElementById('left').innerText = '$' + left.toFixed(2);
 
-  // Budget status alert
   let st = document.getElementById('status');
   if (data.budget === 0) {
     st.style.borderColor = '#3b82f6';
@@ -62,7 +60,6 @@ function updateUI() {
     st.innerText = 'User: ' + data.user + ' | Within budget. Remaining = $' + left.toFixed(2);
   }
 
-  // Category progress bars
   document.getElementById('bars').innerHTML = ['Housing', 'Food', 'Transport', 'Fun'].map(c => {
     let s = data.expenses.filter(e => e.cat === c).reduce((sum, e) => sum + e.amt, 0);
     let w = Math.min(100, (s / (data.budget || 1)) * 100);
@@ -70,7 +67,6 @@ function updateUI() {
             <div class="bar"><div class="fill" style="width:${w}%"></div></div>`;
   }).join('');
 
-  // Search & transaction rows
   let q = document.getElementById('find').value.toLowerCase();
   let rows = [
     ...data.expenses.filter(e => e.cat.toLowerCase().includes(q) || e.desc.toLowerCase().includes(q) || e.month.toLowerCase().includes(q))
@@ -83,13 +79,11 @@ function updateUI() {
   drawChart();
 }
 
-// Draw glowing electric blue spending trend chart
 function drawChart() {
   let canvas = document.getElementById('trendChart');
   let ctx = canvas.getContext('2d');
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Subtle horizontal grid lines
   ctx.strokeStyle = '#1b273d';
   ctx.lineWidth = 1;
   for (let y = 30; y <= 150; y += 40) {
@@ -128,7 +122,6 @@ function resetAll() {
   }
 }
 
-// Generates and downloads a .txt file matching your C++ generateReport() output
 function report() {
   let totInc = data.incomes.reduce((sum, x) => sum + x.amt, 0);
   let totExp = data.expenses.reduce((sum, x) => sum + x.amt, 0);
@@ -150,12 +143,12 @@ function report() {
   text += `Balance: $${balance.toFixed(2)}\n`;
   text += `--------------------------------------\n`;
 
-  // Create and trigger automatic .txt file download
   let blob = new Blob([text], { type: 'text/plain' });
   let link = document.createElement('a');
   link.href = URL.createObjectURL(blob);
   link.download = 'Budget_Tracker_Report.txt';
   link.click();
 }
+
 
 updateUI();
