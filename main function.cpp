@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "common.h"
+#include "Function expenses.h"
+#include "budget.h"
 
 int main(){
     int choice;
@@ -82,4 +83,5 @@ int main(){
 
     return 0;
 }
+
 
