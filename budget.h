@@ -1,0 +1,10 @@
+void addUser();
+void addIncome();
+void saveIncome();
+void loadIncome();
+void setBudget();
+void saveBudget();
+void loadBudget();
+void calculateBalance();
+void generateReport();
+void checkBudgetAlert();
