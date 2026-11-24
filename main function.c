@@ -15,12 +15,13 @@ int main(){
         printf("3. Add Expense\n");
         printf("4. View Expenses\n");
         printf("5. Calculate Total Expenses\n");
-        printf("6. Search Expense by Category\n");
-        printf("7. Search Expense by Month\n")
-        printf("8. Set Budget\n");
-        printf("9. Calculate Balance\n");
-        printf("10. Generate Report\n");
-        printf("11. Check Budget Alert\n");
+        printf("6. Calculate Total Income.\n");
+        printf("7. Search Expense by Category\n");
+        printf("8. Search Expense by Month\n")
+        printf("9. Set Budget\n");
+        printf("10. Calculate Balance\n");
+        printf("11. Generate Report\n");
+        printf("12. Check Budget Alert\n");
         printf("0. Exit\n");
         
         printf("\n");
@@ -46,30 +47,34 @@ int main(){
                 break;
 
             case 5:
-                printf("\nTotal Expenses: %.2f\n", calculateTotalExpenses());
+                printf("\nTotal Expenses: $%.2f\n", calculateTotalExpenses());
                 break;
-
+           
             case 6:
-               searchByCategory();
+                printf("\nTotal Income: $%.2f\n", calculateTotalIncome());
                 break;
 
             case 7:
+               searchByCategory();
+                break;
+
+            case 8:
                searchByMonth();
                 break;
            
-            case 8:
+            case 9:
                 setBudget();
                  break;
 
-            case 9:
+            case 10:
                 calculateBalance();
                 break;
 
-            case 10:
+            case 11:
                 generateReport();
                 break;
 
-            case 11:
+            case 12:
                 checkBudgetAlert();
                 break;
 
