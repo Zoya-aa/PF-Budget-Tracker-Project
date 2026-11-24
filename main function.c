@@ -17,7 +17,7 @@ int main(){
         printf("5. Calculate Total Expenses\n");
         printf("6. Calculate Total Income.\n");
         printf("7. Search Expense by Category\n");
-        printf("8. Search Expense by Month\n")
+        printf("8. Search Expense by Month\n");
         printf("9. Set Budget\n");
         printf("10. Calculate Balance\n");
         printf("11. Generate Report\n");
@@ -39,7 +39,7 @@ int main(){
                 break;
 
             case 3:
-                addExpenses();
+                addExpense();
                 break;
 
             case 4:
