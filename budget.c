@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 
+
 # define MAX_ENTRIES 100
 	char userName[50];
 	char incomeSource[MAX_ENTRIES][50];
