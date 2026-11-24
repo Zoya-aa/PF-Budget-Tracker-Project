@@ -10,16 +10,17 @@ int main(){
 
     do{
         printf("\n===== BUDGET TRACKER =====\n");
-        printf("1. Add Expense\n");
-        printf("2. View Expenses\n");
-        printf("3. Calculate Total Expenses\n");
-        printf("4. Search Expense by Category\n");
-        printf("5. Search Expense by Month\n");
-        printf("6. Add Income\n");
-        printf("7. Set Budget\n");
-        printf("8. Calculate Balance\n");
-        printf("9. Generate Report\n");
-        printf("10. Check Budget Alert\n");
+        printf("1. Add User\n");
+        printf("2. Add Income\n");
+        printf("3. Add Expense\n");
+        printf("4. View Expenses\n");
+        printf("5. Calculate Total Expenses\n");
+        printf("6. Search Expense by Category\n");
+        printf("7. Search Expense by Month\n")
+        printf("8. Set Budget\n");
+        printf("9. Calculate Balance\n");
+        printf("10. Generate Report\n");
+        printf("11. Check Budget Alert\n");
         printf("0. Exit\n");
         
         printf("\n");
@@ -29,42 +30,46 @@ int main(){
         switch(choice){
 
             case 1:
-                addExpense();
+                addUser();
                 break;
 
             case 2:
-                viewExpenses();
-                break;
-
-            case 3:
-                calculateTotalExpenses();
-                break;
-
-            case 4:
-                searchByCategory();
-                break;
-
-            case 5:
-                searchByMonth();
-                break;
-
-            case 6:
                 addIncome();
                 break;
 
-            case 7:
-                setBudget();
+            case 3:
+                addExpenses();
                 break;
 
+            case 4:
+               viewExpenses();
+                break;
+
+            case 5:
+                printf("\nTotal Expenses: %.2f\n", calculateTotalExpenses());
+                break;
+
+            case 6:
+               searchByCategory();
+                break;
+
+            case 7:
+               searchByMonth();
+                break;
+           
             case 8:
+                setBudget();
+                 break;
+
+            case 9:
                 calculateBalance();
                 break;
 
-            case 9:
+            case 10:
                 generateReport();
                 break;
 
-            case 10:
+            case 11:
                 checkBudgetAlert();
                 break;
 
