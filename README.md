@@ -23,9 +23,9 @@ A personal budget tracker application designed for managing monthly budgets, inc
 
 | File | Description |
 | :--- | :--- |
-| `main function.cpp` | Entry point of the C/C++ console application; integrates the budget and expense modules via header files. |
-| `expenses.h` / `expenses.cpp` | **Member 1:** Handles expense logging, category/month searching, total expense calculations, and file storage. |
-| `budget.h` / `budget.cpp` | **Member 2:** Handles user setup, income tracking, monthly budget limits, balance calculations, alerts, and report generation. |
+| `main function.c` | Entry point of the C/C++ console application; integrates the budget and expense modules via header files. |
+| `expenses.h` / `expenses.c` | **Member 1:** Handles expense logging, category/month searching, total expense calculations, and file storage. |
+| `budget.h` / `budget.c` | **Member 2:** Handles user setup, income tracking, monthly budget limits, balance calculations, alerts, and report generation. |
 | `index.html` | Structure and layout of the web-based GUI dashboard. |
 | `style.css` | Black and electric-blue dark theme styling for the dashboard. |
 | `app.js` | Frontend logic, live chart rendering, local storage persistence, and `.txt` report export. |
