@@ -5,6 +5,7 @@ void loadIncome();
 void setBudget();
 void saveBudget();
 void loadBudget();
+double calculateTotalIncome();
 void calculateBalance();
 void generateReport();
 void checkBudgetAlert();
