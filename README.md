@@ -37,7 +37,7 @@ Ensure you have a C/C++ compiler installed (such as `g++` via MinGW on Windows, 
 
 Open your terminal in the project folder and compile all source files together:
 ```bash
-gcc "main function.cpp" expenses.cpp budget.cpp -o tracker
+gcc "main function.c" expenses.c budget.c -o tracker
 ./tracker
 
 
