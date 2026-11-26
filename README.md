@@ -37,10 +37,11 @@ Ensure you have a C/C++ compiler installed (such as `g++` via MinGW on Windows, 
 
 Open your terminal in the project folder and compile all source files together:
 ```bash
-g++ "main function.cpp" expenses.cpp budget.cpp -o tracker
+gcc "main function.cpp" expenses.cpp budget.cpp -o tracker
 ./tracker
 
-### 2. **Web Dashboard GUI**
+
+### 2. Web Dashboard GUI
 1. Navigate to the project folder on your computer.
 2. Double-click `index.html` to open the dashboard directly in any web browser (Chrome, Edge, Firefox, etc.).
 
