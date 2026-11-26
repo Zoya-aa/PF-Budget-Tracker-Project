@@ -3,7 +3,7 @@
 * **Course:** Programming Fundamentals  
 * **Team:** Omaima Siddique (26K-2517), Zoya Shahid (26K-2515)  
 
-A personal budget tracker application designed for managing monthly budgets, income sources, and home expenses. The backend logic is written in **C/C++** using a modular header-and-source file architecture, accompanied by an interactive **HTML, CSS, and JavaScript** web dashboard.
+A personal budget tracker application designed for managing monthly budgets, income sources, and home expenses.The backend logic is written in **C/C++** using a modular header-and-source file architecture, accompanied by an interactive **HTML, CSS, and JavaScript** web dashboard.
 
 
 
